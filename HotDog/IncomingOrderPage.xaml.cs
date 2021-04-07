@@ -34,10 +34,10 @@ namespace HotDogApp
 
         public async Task GetOrders()
         {
-            // retrieve orders with own cart ID, that are not fulfilled and sort by order number
+            // retrieve orders with own cart ID, that are not fulfilled and sort by order number.
             _orderList = await _client.GetTable<Order>().Where(x => x.CartId == CartConstants.CartId && x.Fulfilled == false).OrderBy(y => y.OrderNumber).ToCollectionAsync();
 
-            // retrieve sql hot dogs by order, convert to normal hot dogs and set itemssource
+            // retrieve sql hot dogs by order, convert to normal hot dogs and set itemssource.
             _hotDogCollection = new ObservableCollection<HotDog>();
             foreach (var order in _orderList)
             {
