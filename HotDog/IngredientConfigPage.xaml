@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:util="clr-namespace:HotDogApp;assembly=HotDog"
+             x:Class="HotDogApp.IngredientConfigPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <util:CurrencyConverter x:Key="currencyConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout x:Name="IngredientLayout" Padding="10" BackgroundColor="Wheat">
+            <Label Text="Type:"/>
+            <Picker x:Name="typePicker" SelectedItem="{Binding Type}" />
+            <Label Text="Ingredient:"/>
+            <Entry Text="{Binding Name}"/>
+            <Label Text="Price:"/>
+            <Entry Text="{Binding Price, Converter={StaticResource currencyConverter}}" Keyboard="Numeric" />
+            <Label Text="Cost:"/>
+            <Entry Text="{Binding Cost, Converter={StaticResource currencyConverter}}" Keyboard="Numeric" />
+            <Label Text="Order amount:"/>
+            <Entry Text="{Binding Stock}" Placeholder="" Keyboard="Numeric"/>
+            <Label Text="Minimum for new delivery:"/>
+            <Entry Text="{Binding Threshold}" Placeholder="" Keyboard="Numeric"/>
+
+            <Button Text="Save" Clicked="OnSaveIngredient" Style="{StaticResource buttonStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

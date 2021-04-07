@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotDogConsumer.BasketPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Wheat" Padding="20">
+            <Grid VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Frame Style="{StaticResource extFrame}" Grid.Column="0">
+                    <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                        <Label Text="Hot Dogs" FontSize="Large" FontAttributes="Bold" TextColor="White" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Frame>
+                </Frame>
+                <Frame Style="{StaticResource extFrame}" Grid.Column="1">
+                    <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                        <Label x:Name="priceLabel" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Frame>
+                </Frame>
+            </Grid>
+            <ListView x:Name="orderListView" ItemSelected="OnHotDogSelected" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid Padding="5" HorizontalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.33*"/>
+                                        <ColumnDefinition Width="0.34*"/>
+                                        <ColumnDefinition Width="0.33*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Style="{StaticResource extFrame}" Grid.Row="0" Grid.Column="0">
+                                        <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                            <Label Text="{Binding Bun.Name}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+                                        </Frame>
+                                    </Frame>
+                                    <Frame Style="{StaticResource extFrame}" Grid.Row="0" Grid.Column="1">
+                                        <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                            <Label Text="{Binding Sausage.Name}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                                        </Frame>
+                                    </Frame>
+                                    <Frame Style="{StaticResource extFrame}" Grid.Row="0" Grid.Column="2">
+                                        <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                            <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                        </Frame>
+                                    </Frame>
+
+                                    <Label Text="{Binding Topping0.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="1" Grid.Column="0"/>
+                                    <Label Text="{Binding Topping1.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="1" Grid.Column="1"/>
+                                    <Label Text="{Binding Topping2.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="1" Grid.Column="2"/>
+
+                                    <Label Text="{Binding Sauce0.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="2" Grid.Column="0"/>
+                                    <Label Text="{Binding Sauce1.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="2" Grid.Column="1"/>
+                                    <Label Text="{Binding Sauce2.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="2" Grid.Column="2"/>
+
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout x:Name="orderNumberLayout" IsVisible="false" HorizontalOptions="Center">
+                <Label Text="Order Number:" HorizontalOptions="Center"/>
+                <Label x:Name="orderNumberLabel" FontSize="Header" HorizontalOptions="Center"/>
+                <Label x:Name="cartProofLabel" FontSize="Medium" HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="orderButton" Text="Send order" Clicked="OnSendOrder" Style="{StaticResource buttonStyle}"/>
+                <Button x:Name="addButton" Text="Add Hot Dog" Clicked="OnAddHotDog" Style="{StaticResource buttonStyle}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

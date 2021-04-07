@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotDogConsumer.LandingPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Wheat">
+            <Image x:Name="logoImage" Aspect="AspectFit" Margin="0,0,0,-20"/>
+            <ActivityIndicator x:Name="syncIndicator" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false" IsEnabled="True" />
+            <StackLayout HorizontalOptions="Center">
+                <Frame Style="{StaticResource extFrame}">
+                    <Frame Style="{StaticResource intFrame}">
+                        <Label Text=" Opening discount! " FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Yellow"/>
+                    </Frame>
+                </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="10%" Style="{StaticResource discountPercent}"/>
+                    <Label Text="on ALL extras with 2 extras!" Style="{StaticResource discountLabel}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="20%" Style="{StaticResource discountPercent}"/>
+                    <Label Text="on ALL extras with 3 extras!" Style="{StaticResource discountLabel}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="30%" Style="{StaticResource discountPercent}"/>
+                    <Label Text="on ALL extras with 4 extras!" Style="{StaticResource discountLabel}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="40%" Style="{StaticResource discountPercent}"/>
+                    <Label Text="on ALL extras with 5 extras!" Style="{StaticResource discountLabel}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="50%" Style="{StaticResource discountPercent}"/>
+                    <Label Text="on ALL extras with 6 extras!" Style="{StaticResource discountLabel}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

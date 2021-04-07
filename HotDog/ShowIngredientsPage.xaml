@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotDogApp.ShowIngredientsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10" BackgroundColor="Wheat">
+            <Frame Style="{StaticResource extFrame}">
+                <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                    <Label Text="Ingredients:" FontSize="Large" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                </Frame>
+            </Frame>
+            <ListView x:Name="ingredientsListView" ItemSelected="OnIngredientSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
+                            
+                                <Frame Style="{StaticResource extFrame}" Grid.Column="0">
+                                    <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                        <Label Text="{Binding Type}" Style="{StaticResource ingredientLabel}"/>
+                                    </Frame>
+                                </Frame>
+                                <Frame Style="{StaticResource extFrame}" Grid.Column="1">
+                                    <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                        <Label Text="{Binding Name}" Style="{StaticResource ingredientLabel}"/>
+                                    </Frame>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <Button Text="New Ingredient" Clicked="OnAddIngredient" Style="{StaticResource buttonStyle}"/>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

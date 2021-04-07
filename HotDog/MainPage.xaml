@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotDogApp.MainPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout x:Name="layoutToEnable" Padding="20" BackgroundColor="Wheat">
+            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="Center">
+                <Picker x:Name="cartPicker" ItemDisplayBinding="{Binding Identifier}" SelectedIndexChanged="OnCartChanged" HorizontalTextAlignment="Center" VerticalOptions="Center" WidthRequest="200"/>
+                <Button Text="↺" Clicked="OnUpdateClicked" FontSize="Medium" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="40" Style="{StaticResource buttonStyle}"/>
+            </StackLayout>
+            <StackLayout Padding="10">
+                <Button x:Name="ordersButton" IsVisible="False" Text="Orders" Clicked="OnOrdersClicked" Style="{StaticResource buttonStyle}"/>
+                <Button x:Name="ingredientsButton" Text="Ingredients" Clicked="OnIngredientsClicked" Style="{StaticResource buttonStyle}"/>
+                <Button x:Name="inventoryButton" IsVisible="False" Text="Inventory" Clicked="OnInventoryClicked" Style="{StaticResource buttonStyle}"/>
+                <Button x:Name="accountingButton" IsVisible="False" Text="Accounting" Clicked="OnAccountingClicked" Style="{StaticResource buttonStyle}"/>
+                <Button x:Name="cartButton" Text="Carts" Clicked="OnCartClicked" Style="{StaticResource buttonStyle}"/>
+                <Button x:Name="locationButton" IsVisible="False" Text="Update Location" Clicked="OnUpdateLocationClicked" VerticalOptions="End" Style="{StaticResource buttonStyle}"/>
+            </StackLayout>
+            <ActivityIndicator x:Name="syncIndicator" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" IsEnabled="True"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

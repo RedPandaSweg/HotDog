@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotDogApp.IncomingOrderPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout x:Name="layoutToEnable" BackgroundColor="Wheat" Padding="10">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Frame Style="{StaticResource extFrame}">
+                    <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                        <Label Text="Orders:" FontSize="Large" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                    </Frame>
+                </Frame>
+                <Button Text="↺" Clicked="OnUpdateClicked"  FontSize="Medium" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="40" Style="{StaticResource buttonStyle}"/>
+            </StackLayout>
+            
+            <ActivityIndicator x:Name="syncIndicator" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" IsEnabled="True"/>
+            <ListView x:Name="orderListView" ItemSelected="OnOrderSelected" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame Style="{StaticResource extFrame}" Grid.Row="0" Grid.Column="2">
+                                        <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                            <Label Text="{Binding OrderNumber}" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White"/>
+                                        </Frame>
+                                    </Frame>
+                                    <Frame Style="{StaticResource extFrame}" Grid.Row="0" Grid.Column="2">
+                                        <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                            <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="Large" FontAttributes="Bold" TextColor="Lime" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                        </Frame>
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout BindableLayout.ItemsSource="{Binding HotDogCollection}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,5,0,0">
+                                                    <Frame Style="{StaticResource extFrame}">
+                                                        <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                                            <Label Text="{Binding Bun.Name}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                                                        </Frame>
+                                                    </Frame>
+                                                    <Frame Style="{StaticResource extFrame}">
+                                                        <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                                                            <Label Text="{Binding Sausage.Name}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                                        </Frame>
+                                                    </Frame>
+                                                </StackLayout>
+                                                <Grid Padding="5" HorizontalOptions="Center">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="0.33*"/>
+                                                        <ColumnDefinition Width="0.34*"/>
+                                                        <ColumnDefinition Width="0.33*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Label Text="{Binding Topping0.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="0" Grid.Column="0"/>
+                                                    <Label Text="{Binding Topping1.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="0" Grid.Column="1"/>
+                                                    <Label Text="{Binding Topping2.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="0" Grid.Column="2"/>
+
+                                                    <Label Text="{Binding Sauce0.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="1" Grid.Column="0"/>
+                                                    <Label Text="{Binding Sauce0.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="1" Grid.Column="0"/>
+                                                    <Label Text="{Binding Sauce1.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="1" Grid.Column="1"/>
+                                                    <Label Text="{Binding Sauce2.Name}" Style="{StaticResource ingredientLabel}" Grid.Row="1" Grid.Column="2"/>
+
+                                                </Grid>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

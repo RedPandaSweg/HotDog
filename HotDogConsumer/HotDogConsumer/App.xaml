@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotDogConsumer.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BorderColor" Value="BurlyWood" />
+                <Setter Property="BorderWidth" Value="20" />
+                <Setter Property="BackgroundColor" Value="Peru" />
+                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="BorderWidth" Value="3" />
+                <Setter Property="TextColor" Value="Yellow" />
+            </Style>
+            <Style x:Key="xButton" TargetType="Button">
+                <Setter Property="BorderColor" Value="BurlyWood" />
+                <Setter Property="BorderWidth" Value="20" />
+                <Setter Property="BackgroundColor" Value="Peru" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="BorderWidth" Value="3" />
+                <Setter Property="TextColor" Value="Crimson" />
+            </Style>
+            <Style x:Key="extFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="BurlyWood"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Padding" Value="3"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+            <Style x:Key="intFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Peru"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+            <Style x:Key="ingredientLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="discountPercent" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="LimeGreen"/>
+                <Setter Property="Rotation" Value="20"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="discountLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

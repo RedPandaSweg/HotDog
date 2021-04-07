@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotDogApp.InventoryPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout x:Name="layoutToEnable" Padding="10" BackgroundColor="Wheat">
+            <Frame Style="{StaticResource extFrame}">
+                <Frame Padding="10,5" Style="{StaticResource intFrame}">
+                    <Label Text="Inventory:" FontSize="Large" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                </Frame>
+            </Frame>
+            <ListView x:Name="inventoryListView" ItemSelected="OnInventorySelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="2">
+                                <Frame Style="{StaticResource extFrame}">
+                                    <Frame Style="{StaticResource intFrame}">
+                                        <Label Text="{Binding IngredientName}" Style="{StaticResource ingredientLabel}"/>
+                                    </Frame>
+                                </Frame>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                                    <Label Text="{Binding Stock}" FontAttributes="Bold"/>
+                                    <Label Text="/" FontAttributes="Bold"/>
+                                    <Label Text="{Binding MaxStock}" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ActivityIndicator x:Name="syncIndicator" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" IsEnabled="True"/>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+                <Picker x:Name="newInventoryPicker" IsVisible="False" ItemDisplayBinding="{Binding Name}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" WidthRequest="150"/>
+                <Button x:Name="createInventoryButton" Text="Inventorize" IsVisible="False" Clicked="OnCreateInventoryClicked" HorizontalOptions="EndAndExpand" Style="{StaticResource buttonStyle}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

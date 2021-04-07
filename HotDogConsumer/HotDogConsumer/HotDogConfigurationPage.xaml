@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotDogConsumer.HotDogConfigurationPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout x:Name="layoutToEnable" IsEnabled="True" VerticalOptions="FillAndExpand" Padding="20" BackgroundColor="Wheat">
+            <ActivityIndicator x:Name="syncIndicator" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" IsEnabled="True"/>
+            <StackLayout Orientation="Horizontal">
+                <Frame Style="{StaticResource extFrame}">
+                    <Frame Style="{StaticResource intFrame}">
+                        <Picker x:Name="cartPicker" Margin="5,0"  HorizontalTextAlignment="Center" TextColor="Crimson" Title="Choose a cart" ItemDisplayBinding="{Binding CartString}" SelectedIndexChanged="OnCartChanged" HorizontalOptions="FillAndExpand"/>
+                    </Frame>
+                </Frame>
+                <Button Text="↺" Clicked="OnUpdateClicked"  FontSize="Medium" VerticalOptions="Center" FontAttributes="Bold" WidthRequest="40" Style="{StaticResource buttonStyle}"/>
+            </StackLayout>
+            
+
+                <Grid HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+
+                <Picker x:Name="bunPicker" Title="Choose your bun" ItemDisplayBinding="{Binding PriceTag}" SelectedItem="{Binding Bun}" SelectedIndexChanged="OnIngredientsChanged" Grid.Column="0" Grid.Row="0"/>
+                <Picker x:Name="sausagePicker" Title="Choose your sausage" ItemDisplayBinding="{Binding PriceTag}" SelectedItem="{Binding Sausage}" SelectedIndexChanged="OnIngredientsChanged" Grid.Column="0" Grid.Row="1"/>
+
+                <Picker x:Name="toppingPicker0" Title="Choose your 1st topping" ItemDisplayBinding="{Binding PriceTag}" SelectedItem="{Binding Topping0}" SelectedIndexChanged="OnIngredientsChanged" Grid.Column="0" Grid.Row="2"/>
+                <Picker x:Name="toppingPicker1" Title="Choose your 2nd topping" ItemDisplayBinding="{Binding PriceTag}" SelectedItem="{Binding Topping1}" SelectedIndexChanged="OnIngredientsChanged" Grid.Column="0" Grid.Row="3"/>
+                <Picker x:Name="toppingPicker2" Title="Choose your 3rd topping" ItemDisplayBinding="{Binding PriceTag}" SelectedItem="{Binding Topping2}" SelectedIndexChanged="OnIngredientsChanged" Grid.Column="0" Grid.Row="4"/>
+                <Picker x:Name="saucePicker0" Title="Choose your 1st sauce" ItemDisplayBinding="{Binding PriceTag}" SelectedItem="{Binding Sauce0}" SelectedIndexChanged="OnIngredientsChanged" Grid.Column="0" Grid.Row="5"/>
+                <Picker x:Name="saucePicker1" Title="Choose your 2nd sauce" ItemDisplayBinding="{Binding PriceTag}" SelectedItem="{Binding Sauce1}" SelectedIndexChanged="OnIngredientsChanged" Grid.Column="0" Grid.Row="6"/>
+                <Picker x:Name="saucePicker2" Title="Choose your 3rd sauce" ItemDisplayBinding="{Binding PriceTag}" SelectedItem="{Binding Sauce2}" SelectedIndexChanged="OnIngredientsChanged" Grid.Column="0" Grid.Row="7"/>
+
+                <Button Text="X" Clicked="ToppingReset0" Grid.Column="1" Grid.Row="2" Style="{StaticResource xButton}"/>
+                <Button Text="X" Clicked="ToppingReset1" Grid.Column="1" Grid.Row="3" Style="{StaticResource xButton}"/>
+                <Button Text="X" Clicked="ToppingReset2" Grid.Column="1" Grid.Row="4" Style="{StaticResource xButton}"/>
+                <Button Text="X" Clicked="SauceReset0" Grid.Column="1" Grid.Row="5" Style="{StaticResource xButton}"/>
+                <Button Text="X" Clicked="SauceReset1" Grid.Column="1" Grid.Row="6" Style="{StaticResource xButton}"/>
+                <Button Text="X" Clicked="SauceReset2" Grid.Column="1" Grid.Row="7" Style="{StaticResource xButton}"/>
+
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
+                <Label x:Name="priceLabel" Text="0,00 €" FontSize="Large" HorizontalOptions="Center"/>
+                <Label x:Name="discountLabel" IsVisible="False" TextColor="LimeGreen" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
+                <Button Text=" Add hot dog to basket " Clicked="OnAddToBasket" HorizontalOptions="Center" Style="{StaticResource buttonStyle}"/>
+                <Button Text=" Go to basket " Clicked="OnGoToBasketClicked" HorizontalOptions="End" Style="{StaticResource buttonStyle}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
