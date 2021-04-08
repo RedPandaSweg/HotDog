@@ -64,6 +64,22 @@ namespace HotDogApp
                 {
                     await _ingredientTable.InsertAsync(ingredient);
                     CartConstants.OfflineIngredients.Add(ingredient);
+
+                    foreach (Cart cart in CartConstants.OfflineCarts)
+                    {
+                        Inventory inventory = new Inventory
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            CartId = cart.Id,
+                            IngredientId = ingredient.Id,
+                            IngredientName = ingredient.Name,
+                            MaxStock = ingredient.Stock,
+                            Stock = ingredient.Stock,
+                            Threshold = ingredient.Threshold,
+                            Resupplying = false
+                        };
+                        await _client.GetTable<Inventory>().InsertAsync(inventory);
+                    }
                 }
                 else
                 {
@@ -76,6 +92,15 @@ namespace HotDogApp
                     CartConstants.OfflineIngredients[index].Stock = ingredient.Stock;
                     CartConstants.OfflineIngredients[index].Threshold = ingredient.Threshold;
                     CartConstants.OfflineIngredients[index].PriceTag = ingredient.PriceTag;
+
+                    var inventoryList = await _client.GetTable<Inventory>().Where(x => x.IngredientId == ingredient.Id).ToListAsync();
+                    foreach (Inventory inventory in inventoryList)
+                    {
+                        inventory.IngredientName = ingredient.Name;
+                        inventory.MaxStock = ingredient.Stock;
+                        inventory.Threshold = ingredient.Threshold;
+                        await _client.GetTable<Inventory>().UpdateAsync(inventory);
+                    }
                 }
             }
             catch (Exception ex)
